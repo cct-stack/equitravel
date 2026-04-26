@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "equitravel"
+version = "0.1.0"
+description = "Horse Racing Travel Platform — events, venues, vendors, and AI trip planning"
+authors = ["CCT"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = ">=0.115,<1.0"
+uvicorn = {version = ">=0.34", extras = ["standard"]}
+sqlalchemy = ">=2.0,<3.0"
+aiosqlite = ">=0.20"
+httpx = ">=0.28"
+beautifulsoup4 = ">=4.12"
+apscheduler = ">=3.10,<4.0"
+lxml = ">=5.0"
+pydantic = ">=2.0,<3.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=9.0"
+pytest-asyncio = ">=0.24"
+pytest-cov = ">=7.0"
+httpx = ">=0.28"
+
+[tool.pytest.ini_options]
+testpaths = ["api/tests", "scraper/tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+source = ["api", "scraper"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
